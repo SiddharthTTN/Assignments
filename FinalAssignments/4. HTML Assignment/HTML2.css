@@ -1,0 +1,70 @@
+.container{
+	width: 100%;
+}
+
+.innercontainer1{
+	height: 50px;
+	width: 85% ;
+	padding: 15px;
+	color: seagreen; 
+	margin: 0 auto
+}
+
+.innercontainer2{
+	height: 800px;
+	padding: 15px;
+	 width: 85%;
+	 margin: 0 auto
+}
+
+a{	
+	float: right;
+	color: seagreen;
+	font-family: sans-serif;
+}
+
+#heading{
+	float: left;
+	font-size: 25px;
+	font-family: sans-serif;
+}
+
+#divhead{
+	background-color: grey;
+	height: 40px;
+	padding: 10px;
+	font-size: 28px;
+	color:white;
+	border: 10px;
+}
+
+.select{
+	width: 100%;
+	border-radius: 4px;
+	color: white;
+	background-color: seagreen;
+	padding: 5px;
+}
+
+.attatch{
+	width: 97%;
+	border-radius: 4px;
+	border: 1px solid;
+	padding: 4px;
+	background-color: lightgrey;
+}
+
+.text{
+	border-radius: 4px;
+	 padding: 3px
+}
+
+.submit{
+	float: right;
+	margin: 8px;
+	border-radius: 6px;
+	color: white;
+	background-color: seagreen;
+	border: 1px solid;
+	padding: 6px 12px;
+}
