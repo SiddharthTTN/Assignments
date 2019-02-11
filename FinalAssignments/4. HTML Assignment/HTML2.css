@@ -48,10 +48,32 @@ a{
 
 .attatch{
 	width: 97%;
-	border-radius: 4px;
+	border-radius: 3px;
+	display: flex;
+}
+
+.attatch1{
+	
 	border: 1px solid;
-	padding: 4px;
+	background-color: white;
+	float: left;
+	border-color: lightgrey;
+	padding: 5px;
+	flex: 3;
+}
+
+.attatch2{
+	
+	
+	border: 1px solid;
+	border-color: lightgrey;
 	background-color: lightgrey;
+	padding: 5px;
+	color: white;
+	float: right;
+	flex: 1;
+	
+
 }
 
 .text{
