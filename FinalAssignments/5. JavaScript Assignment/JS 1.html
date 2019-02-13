@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		h4{
+			color: blue;
+			text-align: center;
+		}
+	</style>
+</head>
+<body><br>
+	<h4> The amount is : <span id="amount"></span></h4>
+	<h4>The Interest Rate is : <span id="ir"></span></h4>
+	<h4>The duration in Years is : <span id="duration"></span></h4><br>
+	<h4 style="color: red">The Simple Interest is : <span id="si"></span> </h4>
+<script type="text/javascript">
+	var a=prompt("Enter the Amount");
+	var r=prompt("Enter the Interest Rate");
+	var t=prompt("Enter the Duration in Years");
+	var si=(a*r*t)/100;
+	document.getElementById('amount').innerHTML=a;
+	document.getElementById('ir').innerHTML=r;
+	document.getElementById('duration').innerHTML=t;
+	document.getElementById('si').innerHTML=si;
+</script>
+</body>
+</html>

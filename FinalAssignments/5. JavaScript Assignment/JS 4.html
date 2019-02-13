@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var a={
+		Name : "Siddharth Gupta",
+		Age : 22
+	};
+	var b={};
+	function copyObject(t,s) 
+	{
+	  for(i in s) {  
+    		t[i] = s[i];
+  		}
+  		return t;
+	}
+	copyObject(b,a);
+	console.log("The Original Object a is : ")
+	console.log(a);
+	console.log("The Copied Object b is : ")
+	console.log(b);
+</script>
+</body>
+</html>

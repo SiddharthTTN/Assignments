@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	table,td,th
+	{
+		border: 1px solid;
+		padding: 8px;
+		border-collapse: collapse;
+	}
+</style>
+</head>
+<body>
+	<table id="MainTable" style="">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Salary</th>
+			<th>DOB</th>
+		</tr>
+	</table><br>
+	<button onclick="addUser()"  name="Add User"> Add a New User </button>
+	<button onclick="performAction()">Perform Actions </button><br><br>
+	<h2>Users with salary More than 5000 :</h2><br>
+	<table style="border: 1px solid" id="FilterTable">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Salary</th>
+			<th>DOB</th>
+		</tr>
+	</table><br>
+	<h2>Grouping by age :</h2><br>
+	<table style="border: 1px solid" id="FilterTable1">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Salary</th>
+			<th>DOB</th>
+		</tr>
+	</table><br>
+	<h2>Increment Salary by 5x of users with age more than 20yrs and Salary less than 1000 :</h2><br>
+	<table style="border: 1px solid" id="FilterTable2">
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Salary</th>
+			<th>DOB</th>
+		</tr>
+	</table><br>
+	<script type="text/javascript">
+	var a=[];
+	
+	function addUser()
+	{
+		var name=prompt("Enter the name of the user");
+		var age=prompt("Enter the age of the user");
+		var salary=prompt("Enter the salary of the user");
+		var DOB=prompt("Enter the DOB of the user");
+		var obj={};
+		obj['Name']=name;
+		obj['Age']=age;
+		obj['Salary']=salary;
+		obj['DOB']=DOB;
+		a.push(obj);
+		var str='<tr><td>'+name+'</td>'+'<td>'+age+'</td>'+'<td>'+salary+'</td>'+'<td>'+DOB+'</td></tr>';
+		document.getElementById('MainTable').innerHTML += str;
+	}
+
+	var rich=[];
+	var group=[];
+	var salInc=[];
+
+	function performAction()
+	{
+		for(i=0;i<a.length;i++)
+		{
+			if(a[i]['Salary']>5000)
+			{
+				rich.push(a[i]);
+			}
+		}
+		
+		for(i=0;i<rich.length;i++)
+		{
+			var str1='<tr><td>'+rich[i]['Name']+'</td>'+'<td>'+rich[i]['Age']+'</td>'+'<td>'+rich[i]['Salary']+'</td>'+'<td>'+rich[i]['DOB']+'</td></tr>';
+			document.getElementById('FilterTable').innerHTML += str1;	
+		}
+
+		for(i=0;i<a.length;i++)
+		{
+			group.push(a[i]);
+		}
+		function compare(a,b) 
+		{
+  			if (a.Age < b.Age)
+    			return -1;
+  			if (a.Age > b.Age)
+    			return 1;
+ 	 		return 0;	
+		}
+
+		group.sort(compare);
+		for(i=0;i<group.length;i++)
+		{
+			var str2='<tr><td>'+group[i]['Name']+'</td>'+'<td>'+group[i]['Age']+'</td>'+'<td>'+group[i]['Salary']+'</td>'+'<td>'+group[i]['DOB']+'</td></tr>';
+			
+			document.getElementById('FilterTable1').innerHTML += str2;	
+		}
+
+		for(i=0;i<a.length;i++)
+		{
+			if(a[i]['Salary']<1000 && a[i]['Age']>20)
+			{
+				salInc.push(a[i]);
+			}
+		}
+		
+		for(i=0;i<salInc.length;i++)
+		{
+			
+			var str3='<tr><td>'+salInc[i]['Name']+'</td>'+'<td>'+salInc[i]['Age']+'</td>'+'<td>'+salInc[i]['Salary']*5+'</td>'+'<td>'+salInc[i]['DOB']+'</td></tr>';
+			document.getElementById('FilterTable2').innerHTML += str3;	
+		}
+
+	}
+
+</script>
+</body>
+</html>

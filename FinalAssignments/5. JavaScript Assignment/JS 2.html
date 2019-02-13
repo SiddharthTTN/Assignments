@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		h4{
+			color: blue;
+			text-align: center;
+		}
+	</style>
+</head>
+<body><br>
+	<h4> Entered String: <span id="string"></span></h4>
+	<br>
+	<h3 style="color: green;text-align: center;"> <span id="result"></span> </h3>
+	<h3 style="color: red;text-align: center;"> <span id="nresult"></span> </h3>
+<script type="text/javascript">
+	var a=prompt("Enter the String");
+	var b=a.split('');
+	var c=b.slice();
+	b.reverse();
+	var d=b.join('');
+	var e=c.join('');
+	document.getElementById('string').innerHTML=a;
+	if(d==e)
+	{
+		document.getElementById('result').innerHTML="It is a Palindrome";
+	}
+	else
+	{
+		document.getElementById('nresult').innerHTML="It is a Not a palindrome";
+	}
+
+</script>
+</body>
+</html>
