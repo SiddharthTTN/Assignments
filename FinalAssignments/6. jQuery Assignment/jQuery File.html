@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>jQuery Assignment</title>
+	<style type="text/css">
+		table,th,td
+		{
+			border: 2px solid;
+			padding: 5px;
+			border-collapse: collapse;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div id="test"></div>
+<h2 class="head-new">Hello !!</h2>
+<form action="www.google.com">
+	<button type="submit" name="submit">Submit</button>
+</form>
+<div id="main">
+	<p class="target"> This is the Text</p>
+</div>
+<div id="toChange"></div>
+<div id="ques7">
+	<button id="addButton">CLICK ME !!</button>
+</div>
+<p id="clickme">By Default click not working. Click enabled using jQuery</p>
+<select id="choose">
+	<option>Option 1</option>
+	<option>Option 2</option>
+	<option>Option 3</option>
+	<option>Option 4</option>
+</select><br>
+<div id="selectedOption"></div><br>
+<button id="hover">Hover Here</button>
+<ol id="menu">
+	<li>Hover 1</li>
+	<li>Hover 2</li>
+	<li>Hover 3</li>
+	<li>Hover 4</li>
+</ol>
+<br><br>
+<a href="https://www.google.com" id="google">Google Search</a>
+<ol id="parent">
+	<li>Child 1</li>
+	<li>Child 2</li>
+</ol><br>
+<table id="cellcolor">
+	<tr>
+		<th>S.No.</th>
+		<th>Value</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>15</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>30</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>7</td>
+	</tr>
+</table><br><br>
+<button id="callAjax">Call AJAX</button><br><br>
+<div id="ajaxCall"></div>
+<br><table id="ajaxTable">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Action</th>
+	</tr>
+</table>
+<br>
+<button id="start">Start Slideshow</button><br><br>
+<div id="imageArray" style="height: 300px;width: 300px">
+	<img src="./Pic 1.jpg" height="400px" width="500px" />
+</div>
+<script>
+	$(document).ready(function(){
+		//Ques 1
+		console.log("Hello World");
+
+		//Ques 2
+		$("#test").addClass('load');
+
+		//Ques 3
+		$("[class$='-new']").css("color","red");
+
+		//Ques 4
+		$("[type='submit']").attr("disabled","true");
+
+		//Ques 5
+		$("#main > .target").css("font-size","20px");
+
+		//Ques 6
+		$("#toChange").replaceWith("<p>Hello World</p>");
+
+		//Ques 7
+		$("#addButton").click(function(e){
+			$("#ques7").append('<button>Click</button>');
+		});
+
+		//Ques 8
+		var cp = "<p>Click Enabled</p>";
+		$("#clickme").on("click",function(e){$("#clickme").append(cp);})
+
+		//Ques 9
+		$("#choose").change(function(e){$("#selectedOption").append($("#choose").val()+"<br>")})
+
+		//Ques 10
+		$("#hover").hover(
+			function () {
+    			 $('#menu').slideDown('medium');
+  				}, 
+  			function () {
+    			 $('#menu').slideUp('medium');
+  		})
+
+		//Ques11
+		$("#google").click(function(e){
+			e.preventDefault();
+		})
+
+		//Ques 12
+		$("#parent").click(function(e){$("#parent").append("<p>Parent is clicked</>")});
+		$("#parent > li").click(function(e){
+			e.stopPropagation();
+			$("#parent").append("<p>Child is clicked</>");
+		})
+
+		//Ques 13
+		$("body").children().each(function(p,q){
+			var a = $(q).height();
+			console.log(a,q);
+		});
+		
+
+		//Ques 14
+		$("#cellcolor td").each(function(e,x){
+
+			if(x.innerText > 10)
+				$(x).css("background-color","red");
+		})
+
+		//Ques 15
+		$("#callAjax").click(function(e){
+			    $.ajax({url: "https://raw.githubusercontent.com/SiddharthTTN/Assignments/master/FinalAssignments/db.json", async: true, success: function(result) 
+			    {
+ 					$("#ajaxCall").html(result);
+        		}
+        	});
+		})
+
+		//Ques 16
+		$.ajax({
+			url: "https://raw.githubusercontent.com/SiddharthTTN/Assignments/master/FinalAssignments/db.json",
+			method: "get",
+			success: function (result) {
+			console.log(result.length)
+			fillTable(result);
+		}
+		});
+		
+		function fillTable(data1){
+			var data=jQuery.parseJSON(data1);
+			console.log(data);
+			for(i=0;i<data.length;i++){
+				var str='<tr id="row'+i+'"><td>'+data[i]['id']+'</td>'+'<td>'+data[i]['title']+'</td>'+'<td><button class="buttonClick"><i class="fa fa-close" style="font-size:40px;color:red" id="rec'+i+'"></i></button></td></tr>';
+				$("#ajaxTable").append(str);
+			}
+		}
+
+
+		$(".buttonClick").click(function(){
+			console.log("hii");
+		});
+
+		//Ques 17
+		var image = ["./Pic 1.jpg","./Pic 2.jpg","./Pic 3.jpeg","./Pic 4.jpeg"];		
+			$("#start").click(function(){
+				var st=setInterval(function(){
+						$("img").fadeOut(500).attr("src",image[Math.floor(Math.random()*image.length)]).fadeIn(500);
+				},1500);
+			})
+			
+	
+		
+
+
+	});
+</script>
+</body>
+</html>
